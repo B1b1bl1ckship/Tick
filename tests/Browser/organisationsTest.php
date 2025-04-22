@@ -13,8 +13,8 @@ class organisationsTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(config('dusk_urls.login'))
-                    ->type('email', 'pattel.milan+admin@gmail.com')
-                    ->type('password', 'fb@$$AC$ign@TURE')
+                    ->type('email', env('ADMIN_EMAIL'))
+                    ->type('password', env('ADMIN_PASSWORD'))
                     ->press('LOG IN')
                     ->assertPathIs('/dashboard')
                     ->assertSee('Profile')

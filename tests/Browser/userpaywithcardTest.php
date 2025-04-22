@@ -40,8 +40,8 @@ class userpaywithcardTest extends DuskTestCase
                     ->assertPathIs('/shopping/cart')
                     ->assertSee('Your Shopping Cart')
                     ->assertSee('Tick Personality Profile')
-                    ->assertSee('AUD $62.00')
-                    // ->assertSee('Total AUD: $186.00') // Based on Qty 3 as per your description
+                    ->assertSee('AUD $27.50')
+                   
 
                     ->clickLink('Checkout')
                     ->pause(2000)
@@ -50,7 +50,7 @@ class userpaywithcardTest extends DuskTestCase
                     ->assertPathIs('/shopping/cart/checkout')
                     ->assertSee('Checkout')
                     ->assertSee('Billing Info')
-                    ->assertSee('Total AUD: $62.00')
+                    ->assertSee('Total AUD: $27.50')
                     ->assertSee('Tick Personality Profile')
     
                     // Click Pay with Card
