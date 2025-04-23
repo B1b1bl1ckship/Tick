@@ -12,14 +12,14 @@ class TakequestionnaireTest extends DuskTestCase
     public function testcreatenewquetionee(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('https://app-staging.tick.com.au/login')
-                    ->type('email', 'pattel.milan+admin@gmail.com')
-                    ->type('password', 'fb@$$AC$ign@TURE')
+            $browser->visit(config('dusk_urls.login'))
+                ->type('email', env('ADMIN_EMAIL'))
+                ->type('password', env('ADMIN_PASSWORD'))
                     ->press('LOG IN')
                     ->assertPathIs('/dashboard')
                     ->assertSee('Profile')
 
-                    ->visit('https://app-staging.tick.com.au/admin/questionnaires')
+                    ->visit(config('dusk_urls.admin_questionnaires'))
                     ->assertSee('All Questionnaires')
                     ->assertSee('Create new questionnaire')
                     ->pause(2000)  

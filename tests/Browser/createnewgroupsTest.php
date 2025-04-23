@@ -1,27 +1,28 @@
 <?php
 
 namespace Tests\Browser;
-
+use Faker\Factory as Faker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class createnewgroupsTest extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     */
+   
     public function testgrouptest(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('https://app-staging.tick.com.au/login')
-                    ->type('email', 'pattel.milan+admin@gmail.com')
-                    ->type('password', 'fb@$$AC$ign@TURE')
+            $faker = Faker::create();
+            $randomName = $faker->company;
+            $randomPricebook = $faker->numberBetween(1, 100);
+            $browser->visit(config('dusk_urls.login'))
+                ->type('email', env('ADMIN_EMAIL'))
+                ->type('password', env('ADMIN_PASSWORD'))
                     ->press('LOG IN')
                     ->assertPathIs('/dashboard')
                     ->assertSee('Profile')
 
-                    ->visit('https://app-staging.tick.com.au/groups')
+                    ->visit(config('dusk_urls.groups'))
                     ->pause(200)
 
                     ->assertSee('All Groups')
@@ -33,18 +34,18 @@ class createnewgroupsTest extends DuskTestCase
                     ->assertPathIs('/groups/create')
                     ->assertSee('Create new group')
 
-                    // ->type('Groups name', 'Test Org ') 
-                    // ->pause(2000)
-                    // ->type('Pricebook', 'nothingggg' )
-                    // ->pause(2000)
+                    ->type('name', $randomName) 
+                    ->pause(2000)
+                    ->type('pricebook', $randomPricebook)
+                    ->pause(2000)
                     ->assertSee('Pricebook')
-                    ->assertSee('Group Permisions');
-                    // ->check('input[value="admin"]')
-                    // ->check('input[value="licensed"]')
-                    // ->check('input[value="user"]')
-                    // ->press('Create new group')
+                    ->assertSee('Group Permisions')
+                    ->check('adminPermissions') 
+                    ->check('licensePermissions')
+                    ->check('userPermissions')
+                    ->press('Create new group')
 
-                    // ->assertPathIs('/groups');
+                    ->assertPathIs('/groups');
 
 
 

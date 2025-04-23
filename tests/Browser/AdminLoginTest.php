@@ -15,7 +15,6 @@ class AdminLoginTest extends DuskTestCase
                 ->type('email', env('ADMIN_EMAIL'))
                 ->type('password', env('ADMIN_PASSWORD'))
                 ->press('LOG IN')
-                ->pause(1000)
                 ->assertPathIs('/dashboard');
      
             });;

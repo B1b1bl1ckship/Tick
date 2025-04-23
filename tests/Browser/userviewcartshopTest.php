@@ -8,9 +8,7 @@ use Tests\DuskTestCase;
 
 class userviewcartshopTest extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     */
+    
     public function testusershopviewcart(): void
     {
         $this->browse(function (Browser $browser) {
@@ -42,7 +40,7 @@ class userviewcartshopTest extends DuskTestCase
                     ->assertPathIs('/shopping/cart')
                     ->assertSee('Your Shopping Cart')
                     ->assertSee('Tick Personality Profile')
-                    ->assertSee('AUD $27.50')
+                    ->assertSee('AUD $62.00')
                 
 
                 // Click on Continue Shopping
