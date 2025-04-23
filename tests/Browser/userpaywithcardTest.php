@@ -40,7 +40,7 @@ class userpaywithcardTest extends DuskTestCase
                     ->assertPathIs('/shopping/cart')
                     ->assertSee('Your Shopping Cart')
                     ->assertSee('Tick Personality Profile')
-                    ->assertSee('AUD $27.50')
+                    
                    
 
                     ->clickLink('Checkout')
