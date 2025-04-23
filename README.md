@@ -54,12 +54,11 @@ Laravel Dusk Setup
 php artisan dusk:install
 
 2. Update the dusk_urls configuration in your dusk_urls.php file:
-<?php
-return [
+
+For Example..
     'login' => 'https://app-staging.tick.com.au/login',
     'admin_questionnaires' => 'https://app-staging.tick.com.au/admin/questionnaires',
     'Create_questionnaires' => 'https://app-staging.tick.com.au/admin/questionnaires/create',
-];
 
 3. Ensure the .env file contains the following:
 
@@ -67,8 +66,6 @@ ADMIN_EMAIL=your-admin-email@example.com
 ADMIN_PASSWORD=your-admin-password
 
 ## Running Tests
-
-
 
 To run the tests, use the following commands:
 
